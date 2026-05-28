@@ -4,238 +4,928 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Budi Setiawan Tanjung — DevOps Engineer</title>
-<meta name="description" content="DevOps Engineer specializing in AWS, Kubernetes, LLMOps, and Blockchain infrastructure.">
+<meta name="description" content="DevOps Engineer · Infrastructure & Reliability Specialist · AWS · Kubernetes · LLMOps · Blockchain.">
 <meta property="og:title" content="Budi Setiawan Tanjung — DevOps Engineer">
 <meta property="og:description" content="Infrastructure & Reliability Specialist. AWS · Kubernetes · LLMOps · Blockchain RPC.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fafafa;
-    --text: #1a1a1a;
-    --muted: #6b7280;
+    --bg: #fafaf9;
+    --bg-elevated: #ffffff;
+    --bg-subtle: #f4f4f3;
+    --text: #0a0a0a;
+    --text-muted: #6b7280;
+    --text-subtle: #9ca3af;
     --accent: #2563eb;
+    --accent-soft: #dbeafe;
     --border: #e5e7eb;
-    --card: #ffffff;
+    --shadow: rgba(0,0,0,0.04);
+    --shadow-lg: rgba(0,0,0,0.08);
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0f0f10;
-      --text: #e8e8e8;
-      --muted: #9ca3af;
-      --accent: #60a5fa;
-      --border: #2a2a2c;
-      --card: #18181a;
-    }
+  [data-theme="dark"] {
+    --bg: #0a0a0b;
+    --bg-elevated: #131316;
+    --bg-subtle: #1a1a1d;
+    --text: #f5f5f4;
+    --text-muted: #a1a1aa;
+    --text-subtle: #71717a;
+    --accent: #60a5fa;
+    --accent-soft: #1e3a8a33;
+    --border: #27272a;
+    --shadow: rgba(0,0,0,0.3);
+    --shadow-lg: rgba(0,0,0,0.5);
   }
-  * { box-sizing: border-box; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    margin: 0;
-    padding: 2rem 1rem;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
   }
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
+  code, .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+
+  /* Scroll progress bar */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s;
   }
-  header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
+
+  /* Navbar */
+  nav.topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-  }
-  h1 {
-    font-size: 2rem;
-    margin: 0 0 0.25rem;
-    letter-spacing: -0.02em;
-  }
-  .tagline {
-    color: var(--muted);
-    font-size: 1.05rem;
-    margin: 0 0 1rem;
-  }
-  .contact {
+    z-index: 100;
+    padding: 0.9rem 1.5rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.25rem;
-    font-size: 0.9rem;
-    color: var(--muted);
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s;
   }
-  .contact a {
-    color: var(--accent);
+  .nav-brand {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--text);
     text-decoration: none;
   }
-  .contact a:hover { text-decoration: underline; }
-
-  section {
-    margin-bottom: 2rem;
+  .nav-brand span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
   }
-  h2 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin: 0 0 1rem;
-    font-weight: 600;
-  }
-  h3 {
-    font-size: 1.05rem;
-    margin: 0 0 0.15rem;
-    font-weight: 600;
-  }
-  .role-meta {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin: 0 0 0.5rem;
-  }
-  .job {
-    margin-bottom: 1.5rem;
-  }
-  ul {
-    margin: 0.5rem 0 0;
-    padding-left: 1.2rem;
-  }
-  li {
-    margin-bottom: 0.35rem;
-  }
-  .skills {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 0.5rem 1rem;
-    font-size: 0.95rem;
-  }
-  .skill-label {
-    color: var(--muted);
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
     font-weight: 500;
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    transition: all 0.2s;
   }
-  .edu-item {
+  .nav-links a:hover {
+    color: var(--text);
+    background: var(--bg-subtle);
+  }
+  .nav-links a.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .theme-toggle {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover { transform: scale(1.05); border-color: var(--accent); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .mobile-toggle { display: none; }
+
+  /* Side dot nav */
+  .dot-nav {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 50;
+  }
+  .dot-nav a {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--text-subtle);
+    opacity: 0.4;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .dot-nav a:hover, .dot-nav a.active {
+    opacity: 1;
+    background: var(--accent);
+    transform: scale(1.4);
+  }
+  .dot-nav a::before {
+    content: attr(data-label);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: var(--text);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .dot-nav a:hover::before { opacity: 1; }
+
+  /* Container */
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideUp 0.6s 0.1s forwards;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideUp 0.6s 0.2s forwards;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    opacity: 0;
+    animation: slideUp 0.6s 0.3s forwards;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    opacity: 0;
+    animation: slideUp 0.6s 0.4s forwards;
+  }
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hero-meta .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 4px #10b98133;
+    animation: pulse 2s infinite;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: slideUp 0.6s 0.5s forwards;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  .btn-secondary {
+    background: var(--bg-elevated);
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Sections */
+  section.content {
+    padding: 5rem 0 3rem;
+    scroll-margin-top: 70px;
+  }
+  .section-label {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
-  footer {
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+  .section-intro {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 8px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    z-index: 1;
+    transition: all 0.3s;
+  }
+  .timeline-item:hover::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+  .timeline-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+  .timeline-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px var(--shadow);
+  }
+  .role-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+  .role-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .role-period {
     font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+  .role-company {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+  .role-location {
+    color: var(--text-subtle);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .role-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .role-bullets li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .role-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+  .role-bullets strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .skill-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.2s;
+  }
+  .skill-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    transform: translateY(-2px);
+  }
+  .skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .skill-card-icon {
+    width: 32px; height: 32px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .skill-tag {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.15s;
+  }
+  .skill-tag:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.05);
+  }
+
+  /* Education */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .edu-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.2s;
+  }
+  .edu-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    transform: translateY(-2px);
+  }
+  .edu-card .edu-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+  }
+  .edu-card .edu-school {
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+  }
+  .edu-card .edu-year {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Contact */
+  .contact-section {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem 2rem;
     text-align: center;
+    margin: 2rem 0;
   }
-  @media (max-width: 540px) {
-    .skills { grid-template-columns: 1fr; gap: 0.2rem; }
-    .skill-label { margin-top: 0.5rem; }
+  .contact-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
   }
+  .contact-section p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-subtle);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* Animations */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px #10b98133; }
+    50% { box-shadow: 0 0 0 8px #10b98111; }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .dot-nav { display: none; }
+    .nav-links a:not(.theme-toggle) { display: none; }
+    .nav-links .theme-toggle { display: inline-flex; }
+    .hero { min-height: 80vh; }
+    .timeline { padding-left: 1.5rem; }
+    .timeline-item::before { left: -1.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .contact-section { padding: 2rem 1.5rem; }
+    .contact-section h3 { font-size: 1.4rem; }
+  }
+
+  /* Print */
   @media print {
-    body { background: white; color: black; padding: 0.5in; font-size: 10.5pt; }
-    .container { max-width: none; }
-    a { color: black; text-decoration: none; }
-    h1 { font-size: 18pt; }
-    h2 { color: #555; }
-    section { margin-bottom: 1.2rem; }
-    .job { margin-bottom: 1rem; }
+    nav.topnav, .dot-nav, .progress-bar, .hero-cta, .contact-links { display: none !important; }
+    body { background: white; color: black; font-size: 10.5pt; }
+    .hero { min-height: auto; padding-top: 0; }
+    section.content { padding: 1rem 0; page-break-inside: avoid; }
+    .timeline-card, .skill-card, .edu-card { box-shadow: none !important; border: 1px solid #ccc; break-inside: avoid; }
+    .reveal { opacity: 1 !important; transform: none !important; }
   }
 </style>
 </head>
-<body>
-  <div class="container">
+<body data-theme="dark">
 
-    <header>
-      <h1>Budi Setiawan Tanjung</h1>
-      <p class="tagline">DevOps Engineer · Infrastructure &amp; Reliability Specialist</p>
-      <div class="contact">
-        <span>Surabaya, Indonesia · Remote Ready</span>
-        <a href="https://github.com/budisetiawan760">github.com/budisetiawan760</a>
-        <a href="https://www.linkedin.com/in/budisetiawan760">LinkedIn</a>
-      </div>
-    </header>
+  <div class="progress-bar" id="progress"></div>
 
-    <section>
-      <h2>Professional Summary</h2>
-      <p>
+  <nav class="topnav">
+    <a href="#top" class="nav-brand">Budi<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <aside class="dot-nav" id="dotNav">
+    <a href="#top" data-label="Home" data-target="top"></a>
+    <a href="#about" data-label="About" data-target="about"></a>
+    <a href="#experience" data-label="Experience" data-target="experience"></a>
+    <a href="#skills" data-label="Skills" data-target="skills"></a>
+    <a href="#education" data-label="Education" data-target="education"></a>
+    <a href="#contact" data-label="Contact" data-target="contact"></a>
+  </aside>
+
+  <div id="top"></div>
+
+  <header class="hero container">
+    <div class="hero-eyebrow">DevOps Engineer · Infrastructure &amp; Reliability</div>
+    <h1>Budi Setiawan<br><span class="accent">Tanjung</span></h1>
+    <p class="hero-subtitle">
+      Reliability-focused infrastructure engineer with 6+ years of experience.
+      Specializing in <strong>LLMOps</strong> and <strong>Blockchain RPC infrastructure</strong>
+      on AWS &amp; Kubernetes.
+    </p>
+    <div class="hero-meta">
+      <span><span class="dot"></span> Available for remote roles</span>
+      <span>📍 Surabaya, Indonesia</span>
+      <span>🌏 Open to global opportunities</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">
+        Get in touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com/budisetiawan760" target="_blank" rel="noopener" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/budisetiawan760" target="_blank" rel="noopener" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <button onclick="window.print()" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Download PDF
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="about" class="content reveal">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Bridging dev and ops with code</h2>
+      <p class="section-intro" style="max-width: 720px;">
         Reliability-focused Infrastructure Engineer with 6+ years of total technical experience,
         including 2+ years of dedicated DevOps/SRE roles in the <strong>Web3 and AI</strong> sectors.
-        Proven track record of managing production workloads across AWS (EC2/ECS) and
-        Kubernetes (K3s), with a specialized focus on <strong>LLMOps</strong> and
-        <strong>Blockchain RPC infrastructure</strong>. Expert at high-pressure incident response,
-        automated system recovery, and bridge-building between development and operations
-        through robust Bash and Node.js automation.
+        Proven track record of managing production workloads across AWS (EC2/ECS) and Kubernetes (K3s),
+        with a specialized focus on LLMOps and Blockchain RPC infrastructure.
+        Expert at high-pressure incident response, automated system recovery, and bridge-building between
+        development and operations through robust Bash and Node.js automation.
       </p>
     </section>
 
-    <section>
-      <h2>Technical Skills</h2>
-      <div class="skills">
-        <span class="skill-label">Cloud &amp; Orchestration</span>
-        <span>AWS (EC2, ECS, S3, Global Accelerator), Kubernetes (K3s), Docker, Microsoft Azure (VMs)</span>
+    <section id="experience" class="content reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Where I've worked</h2>
 
-        <span class="skill-label">IaC &amp; CI/CD</span>
-        <span>Terraform (Basics), GitHub Actions, Jenkins, Shell Scripting (Bash), Node.js Automation</span>
+      <div class="timeline">
 
-        <span class="skill-label">Observability &amp; Security</span>
-        <span>Prometheus, Grafana, HashiCorp Vault, Monitoring &amp; Alerting (CloudWatch)</span>
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="role-header">
+              <div>
+                <div class="role-title">DevOps Engineer (AI Infrastructure Focus)</div>
+                <div class="role-company">SiloTech.xyz</div>
+              </div>
+              <div class="role-period">Mar 2025 – Present</div>
+            </div>
+            <div class="role-location">Lithuania · Remote</div>
+            <ul class="role-bullets">
+              <li><strong>Orchestrated AWS-based AI Agent infrastructure</strong> (~30 EC2 instances, ECS, and K3s clusters) supporting high-concurrency distributed LLM workloads.</li>
+              <li><strong>Optimized LLMOps reliability</strong> by identifying and resolving performance bottlenecks in AI model inference and workload instability.</li>
+              <li><strong>Maintained a 99%+ uptime target</strong> for a self-hosted stack (Supabase, Redis, MinIO) before leading the strategic migration toward cloud-managed models.</li>
+              <li><strong>Hardened infrastructure security</strong> by centralizing secrets management via HashiCorp Vault and implementing automated CI/CD security checks.</li>
+            </ul>
+          </div>
+        </div>
 
-        <span class="skill-label">Niche Infrastructure</span>
-        <span>LLMOps (Multi-LLM Backends), Blockchain Node Management (RPC/Indexing), Supabase (Self-hosted)</span>
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="role-header">
+              <div>
+                <div class="role-title">DevOps Engineer</div>
+                <div class="role-company">Saakuru Blockchain</div>
+              </div>
+              <div class="role-period">Jan 2024 – Mar 2025</div>
+            </div>
+            <div class="role-location">Singapore · Remote</div>
+            <ul class="role-bullets">
+              <li><strong>Managed high-availability Blockchain RPC endpoints</strong> and node infrastructure, ensuring 24/7 service stability for the Saakuru Wallet and SDK.</li>
+              <li><strong>Reduced Mean Time to Recovery (MTTR)</strong> by diagnosing critical distributed system issues, including chain reorgs and indexing delays.</li>
+              <li><strong>Drove infrastructure transitions</strong> during a pivot from blockchain to AI architecture, decommissioning legacy stacks while maintaining data integrity.</li>
+            </ul>
+          </div>
+        </div>
 
-        <span class="skill-label">Data &amp; Middleware</span>
-        <span>PostgreSQL, Redis, MinIO, Nginx</span>
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="role-header">
+              <div>
+                <div class="role-title">DevOps Engineer</div>
+                <div class="role-company">AAG Ventures</div>
+              </div>
+              <div class="role-period">Mar 2023 – Jan 2024</div>
+            </div>
+            <div class="role-location">Singapore · Remote</div>
+            <ul class="role-bullets">
+              <li><strong>Automated multi-environment deployments</strong> using Jenkins and GitHub Actions, reducing manual overhead and deployment errors for the MetaOne Wallet.</li>
+              <li><strong>Stabilized production environments</strong> by performing deep-dive troubleshooting into Node.js services and PostgreSQL database performance.</li>
+              <li><strong>Gained cross-cloud proficiency</strong> by managing AWS EC2/S3 assets and supporting initial Azure-based infrastructure operations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="role-header">
+              <div>
+                <div class="role-title">Frontend &amp; Laravel Developer</div>
+                <div class="role-company">PT Saranan Integrasi Informatika Nusantara</div>
+              </div>
+              <div class="role-period">Sep 2018 – Mar 2023</div>
+            </div>
+            <div class="role-location">Indonesia</div>
+            <ul class="role-bullets">
+              <li><strong>Standardized dev-to-prod parity</strong> by containerizing Laravel and Vue.js applications using Docker, improving developer onboarding speed.</li>
+              <li><strong>Developed internal REST APIs</strong> and admin dashboards, providing a strong software engineering foundation for future infrastructure automation roles.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <section>
-      <h2>Professional Experience</h2>
+    <section id="skills" class="content reveal">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">Technical toolkit</h2>
+      <p class="section-intro">A pragmatic toolkit built across cloud, container orchestration, IaC, and observability.</p>
 
-      <div class="job">
-        <h3>DevOps Engineer (AI Infrastructure Focus) · SiloTech.xyz</h3>
-        <p class="role-meta">Lithuania (Remote) · March 2025 – Present</p>
-        <ul>
-          <li><strong>Orchestrated AWS-based AI Agent infrastructure</strong> (~30 EC2 instances, ECS, and K3s clusters) supporting high-concurrency distributed LLM workloads.</li>
-          <li><strong>Optimized LLMOps reliability</strong> by identifying and resolving performance bottlenecks in AI model inference and workload instability.</li>
-          <li><strong>Maintained a 99%+ uptime target</strong> for a self-hosted stack (Supabase, Redis, MinIO) before leading the strategic migration toward cloud-managed models.</li>
-          <li><strong>Hardened infrastructure security</strong> by centralizing secrets management via HashiCorp Vault and implementing automated CI/CD security checks.</li>
-        </ul>
-      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">☁</div>
+            <span>Cloud &amp; Orchestration</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS EC2</span>
+            <span class="skill-tag">ECS</span>
+            <span class="skill-tag">S3</span>
+            <span class="skill-tag">Global Accelerator</span>
+            <span class="skill-tag">Kubernetes (K3s)</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Azure VMs</span>
+          </div>
+        </div>
 
-      <div class="job">
-        <h3>DevOps Engineer · Saakuru Blockchain</h3>
-        <p class="role-meta">Singapore (Remote) · Jan 2024 – March 2025</p>
-        <ul>
-          <li><strong>Managed high-availability Blockchain RPC endpoints</strong> and node infrastructure, ensuring 24/7 service stability for the Saakuru Wallet and SDK.</li>
-          <li><strong>Reduced Mean Time to Recovery (MTTR)</strong> by diagnosing critical distributed system issues, including chain reorgs and indexing delays.</li>
-          <li><strong>Drove infrastructure transitions</strong> during a pivot from blockchain to AI architecture, decommissioning legacy stacks while maintaining data integrity.</li>
-        </ul>
-      </div>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">⚙</div>
+            <span>IaC &amp; CI/CD</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Terraform</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">Jenkins</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">Node.js</span>
+          </div>
+        </div>
 
-      <div class="job">
-        <h3>DevOps Engineer · AAG Ventures</h3>
-        <p class="role-meta">Singapore (Remote) · March 2023 – Jan 2024</p>
-        <ul>
-          <li><strong>Automated multi-environment deployments</strong> using Jenkins and GitHub Actions, reducing manual overhead and deployment errors for the MetaOne Wallet.</li>
-          <li><strong>Stabilized production environments</strong> by performing deep-dive troubleshooting into Node.js services and PostgreSQL database performance.</li>
-          <li><strong>Gained cross-cloud proficiency</strong> by managing AWS EC2/S3 assets and supporting initial Azure-based infrastructure operations.</li>
-        </ul>
-      </div>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">📊</div>
+            <span>Observability &amp; Security</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Prometheus</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">HashiCorp Vault</span>
+            <span class="skill-tag">CloudWatch</span>
+          </div>
+        </div>
 
-      <div class="job">
-        <h3>Frontend &amp; Laravel Developer · PT Saranan Integrasi Informatika Nusantara</h3>
-        <p class="role-meta">Indonesia · Sept 2018 – March 2023</p>
-        <ul>
-          <li><strong>Standardized dev-to-prod parity</strong> by containerizing Laravel and Vue.js applications using Docker, improving developer onboarding speed.</li>
-          <li><strong>Developed internal REST APIs</strong> and admin dashboards, providing a strong software engineering foundation for future infrastructure automation roles.</li>
-        </ul>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">🤖</div>
+            <span>Niche Infrastructure</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">LLMOps</span>
+            <span class="skill-tag">Multi-LLM Backends</span>
+            <span class="skill-tag">Blockchain Nodes</span>
+            <span class="skill-tag">RPC / Indexing</span>
+            <span class="skill-tag">Supabase (Self-hosted)</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">💾</div>
+            <span>Data &amp; Middleware</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">MinIO</span>
+            <span class="skill-tag">Nginx</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2>Education &amp; Certifications</h2>
-      <div class="edu-item"><strong>Bachelor of Information Technology</strong> — Universitas Widya Kartika · 2014 – 2018</div>
-      <div class="edu-item"><strong>Blockchain Developer Certification</strong> — Pelita Bangsa Academy · 2025</div>
-      <div class="edu-item"><strong>Fullstack Web Developer Certification</strong> — Purwadhika Digital Technology School · 2023</div>
+    <section id="education" class="content reveal">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-title">Bachelor of Information Technology</div>
+          <div class="edu-school">Universitas Widya Kartika</div>
+          <div class="edu-year">2014 – 2018</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-title">Blockchain Developer Certification</div>
+          <div class="edu-school">Pelita Bangsa Academy</div>
+          <div class="edu-year">2025</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-title">Fullstack Web Developer Certification</div>
+          <div class="edu-school">Purwadhika Digital Technology School</div>
+          <div class="edu-year">2023</div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-      Source on <a href="https://github.com/budisetiawan760/budisetiawan760.github.io">GitHub</a>
-    </footer>
+    <section id="contact" class="content reveal">
+      <div class="contact-section">
+        <h3>Let's build reliable infrastructure together</h3>
+        <p>Open to remote DevOps / SRE / Platform Engineering roles. Reach out via GitHub or LinkedIn.</p>
+        <div class="contact-links">
+          <a href="https://github.com/budisetiawan760" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/budisetiawan760" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
 
-  </div>
+  </main>
+
+  <footer>
+    Built with vanilla HTML/CSS/JS · Source on <a href="https://github.com/budisetiawan760/budisetiawan760.github.io">GitHub</a>
+  </footer>
+
+<script>
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const body = document.body;
+
+  function setTheme(theme) {
+    body.setAttribute('data-theme', theme);
+    iconSun.style.display = theme === 'dark' ? 'block' : 'none';
+    iconMoon.style.display = theme === 'dark' ? 'none' : 'block';
+    localStorage.setItem('theme', theme);
+  }
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    setTheme('light');
+  } else {
+    setTheme('dark');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const current = body.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Scroll progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progress.style.width = scrolled + '%';
+  });
+
+  // Section reveal + active nav
+  const sections = document.querySelectorAll('section.content, #top');
+  const navLinks = document.querySelectorAll('.nav-links a, .dot-nav a');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  const activeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          const targetMatch = (link.getAttribute('href') === '#' + id) ||
+                              (link.getAttribute('data-target') === id);
+          link.classList.toggle('active', targetMatch);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => activeObserver.observe(s));
+</script>
 </body>
 </html>
