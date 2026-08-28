@@ -727,7 +727,8 @@
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
-      <a href="#consultation">Hire me</a>
+      <a href="#work">Work</a>
+      <a href="#consultation">Contact</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
           <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
@@ -744,8 +745,9 @@
     <a href="#about" data-label="About" data-target="about"></a>
     <a href="#experience" data-label="Experience" data-target="experience"></a>
     <a href="#skills" data-label="Skills" data-target="skills"></a>
+    <a href="#work" data-label="Work" data-target="work"></a>
     <a href="#education" data-label="Education" data-target="education"></a>
-    <a href="#consultation" data-label="Hire me" data-target="consultation"></a>
+    <a href="#consultation" data-label="Contact" data-target="consultation"></a>
   </aside>
 
   <div id="top"></div>
@@ -754,8 +756,9 @@
     <div class="hero-eyebrow">DevOps Engineer · Infrastructure &amp; Reliability</div>
     <h1>Budi Setiawan<br><span class="accent">Tanjung</span></h1>
     <p class="hero-subtitle">
-      Reliability-focused infrastructure engineer with 6+ years of experience.
-      Specializing in <strong>LLMOps</strong> and <strong>Blockchain RPC infrastructure</strong>
+      Sole DevOps engineer running production infrastructure for multi-LLM AI agent workloads.
+      Eight years across software and infrastructure, the last three dedicated to
+      <strong>cloud operations</strong>, <strong>reliability</strong> and <strong>AI platform ops</strong>
       on AWS &amp; Kubernetes.
     </p>
     <div class="hero-meta">
@@ -765,7 +768,7 @@
     </div>
     <div class="hero-cta">
       <a href="#consultation" class="btn btn-primary">
-        Hire me for a side gig
+        Get in touch
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="https://github.com/budisetiawan760" target="_blank" rel="noopener" class="btn btn-secondary">
@@ -789,12 +792,18 @@
       <div class="section-label">About</div>
       <h2 class="section-title">Bridging dev and ops with code</h2>
       <p class="section-intro" style="max-width: 720px;">
-        Reliability-focused Infrastructure Engineer with 6+ years of total technical experience,
-        including 2+ years of dedicated DevOps/SRE roles in the <strong>Web3 and AI</strong> sectors.
-        Proven track record of managing production workloads across AWS (EC2/ECS) and Kubernetes (K3s),
-        with a specialized focus on LLMOps and Blockchain RPC infrastructure.
-        Expert at high-pressure incident response, automated system recovery, and bridge-building between
-        development and operations through robust Bash and Node.js automation.
+        I am the sole DevOps engineer at my company and the single escalation point across engineering
+        for infrastructure, deployment and production incidents. Eight years across software and
+        infrastructure, the last three dedicated to DevOps and SRE.
+        <br><br>
+        Day to day that means an AWS estate of roughly 30 EC2 instances, ECS services and two K3s
+        clusters held to a 99% uptime target, with SLOs, SLIs and error budgets I defined myself. I own
+        on-call, write the postmortems and maintain the runbooks &mdash; and when an LLM or agent
+        misbehaves in production, the debugging is mine too, across
+        <strong>Anthropic Claude, OpenRouter, DeepInfra and Perplexity MCP</strong>.
+        <br><br>
+        Before infrastructure I spent five years building backend and frontend systems in Laravel,
+        Angular and Vue, which is why I can debug the application as well as the machine under it.
       </p>
     </section>
 
@@ -815,10 +824,12 @@
             </div>
             <div class="role-location">Lithuania · Remote</div>
             <ul class="role-bullets">
-              <li><strong>Orchestrated AWS-based AI Agent infrastructure</strong> (~30 EC2 instances, ECS, and K3s clusters) supporting high-concurrency distributed LLM workloads.</li>
-              <li><strong>Optimized LLMOps reliability</strong> by identifying and resolving performance bottlenecks in AI model inference and workload instability.</li>
-              <li><strong>Maintained a 99%+ uptime target</strong> for a self-hosted stack (Supabase, Redis, MinIO) before leading the strategic migration toward cloud-managed models.</li>
-              <li><strong>Hardened infrastructure security</strong> by centralizing secrets management via HashiCorp Vault and implementing automated CI/CD security checks.</li>
+              <li><strong>Sole DevOps engineer</strong> for the company and the single escalation point across engineering for infrastructure, deployment and production incidents.</li>
+              <li><strong>Operate an AWS estate</strong> of ~30 EC2 instances, ECS services and two K3s clusters running distributed multi-LLM agent workloads on Anthropic Claude, OpenRouter, DeepInfra and Perplexity MCP.</li>
+              <li><strong>Define SLOs, SLIs and error budgets</strong> against a 99% uptime target; own on-call incident response, write postmortems and maintain runbooks.</li>
+              <li><strong>Provision infrastructure as code with Terraform</strong> and run GitOps delivery to Kubernetes with ArgoCD; CI/CD pipelines in GitHub Actions across sandbox, staging and production.</li>
+              <li><strong>Instrument observability</strong> with Prometheus, Grafana, CloudWatch and Loki/OpenTelemetry; centralise secrets in HashiCorp Vault.</li>
+              <li><strong>Monitor cloud spend across AWS and Azure</strong>, and help select and size AWS Reserved Instance commitments.</li>
             </ul>
           </div>
         </div>
@@ -834,9 +845,10 @@
             </div>
             <div class="role-location">Singapore · Remote</div>
             <ul class="role-bullets">
-              <li><strong>Managed high-availability Blockchain RPC endpoints</strong> and node infrastructure, ensuring 24/7 service stability for the Saakuru Wallet and SDK.</li>
-              <li><strong>Reduced Mean Time to Recovery (MTTR)</strong> by diagnosing critical distributed system issues, including chain reorgs and indexing delays.</li>
-              <li><strong>Drove infrastructure transitions</strong> during a pivot from blockchain to AI architecture, decommissioning legacy stacks while maintaining data integrity.</li>
+              <li><strong>Managed high-availability blockchain RPC endpoints</strong> and node infrastructure for the Saakuru Wallet and SDK.</li>
+              <li><strong>Diagnosed distributed system failures</strong> &mdash; chain reorgs, transaction inconsistencies, indexing delays and explorer mismatches.</li>
+              <li><strong>Supported third-party node applications on Azure VMs</strong> alongside the primary AWS estate, including monitoring and operational maintenance.</li>
+              <li><strong>Helped decommission legacy blockchain stacks</strong> during the company-wide pivot to AI-focused infrastructure.</li>
             </ul>
           </div>
         </div>
@@ -957,9 +969,62 @@
       </div>
     </section>
 
+    <section id="work" class="content reveal">
+      <div class="section-label">Signature work</div>
+      <h2 class="section-title">What I've built and run</h2>
+      <p class="section-intro" style="max-width:720px;">
+        Four things that say more about how I work than a tools list does.
+      </p>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">&#129302;</div>
+          <div class="service-title">Multi-LLM agent infrastructure</div>
+          <div class="service-desc">
+            Production infrastructure for distributed AI agent workloads integrated directly against
+            Anthropic Claude, OpenRouter, DeepInfra and Perplexity MCP &mdash; multi-provider routing,
+            per-provider failure modes, rate limits and cost across four vendors. Includes
+            prompt-level behaviour debugging in production, not just uptime.
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#128736;</div>
+          <div class="service-title">Internal developer-management platform</div>
+          <div class="service-desc">
+            Principal contributor. Node/Express/TypeScript with Prisma and PostgreSQL, React 18/Vite
+            frontend, deployed to Fly.io and Vercel. Magic-link authentication with server-side
+            verification, a 25-entity domain model covering contracts through invoicing, and an MCP
+            server so the whole workflow can be driven from an AI coding CLI.
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#9939;</div>
+          <div class="service-title">Blockchain RPC &amp; node operations</div>
+          <div class="service-desc">
+            High-availability RPC endpoints and node infrastructure across two blockchain products.
+            Chain reorgs, transaction inconsistencies, indexing delays, explorer mismatches, node
+            performance tuning and chain upgrades &mdash; the failure modes most infrastructure
+            engineers never meet.
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#128737;</div>
+          <div class="service-title">Disaster recovery under pressure</div>
+          <div class="service-desc">
+            Rebuilt compromised infrastructure inside-out to restore security and reliability, then
+            carried two platforms through company pivots and the decommissioning that came with them
+            &mdash; without losing the services still running on them.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="education" class="content reveal">
       <div class="section-label">Education</div>
-      <h2 class="section-title">Education &amp; Certifications</h2>
+      <h2 class="section-title">Education &amp; certifications</h2>
       <div class="edu-grid">
         <div class="edu-card">
           <div class="edu-title">Bachelor of Information Technology</div>
@@ -972,9 +1037,36 @@
           <div class="edu-year">2025</div>
         </div>
         <div class="edu-card">
-          <div class="edu-title">Fullstack Web Developer Certification</div>
+          <div class="edu-title">Fullstack Web Developer</div>
           <div class="edu-school">Purwadhika Digital Technology School</div>
           <div class="edu-year">2023</div>
+        </div>
+      </div>
+
+      <h3 class="section-title" style="font-size:1.4rem;margin-top:3rem;">Certifications</h3>
+      <p class="section-intro" style="max-width:720px;">
+        Currently working toward cloud and Kubernetes credentials. This list grows.
+      </p>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-title">Blockchain Developer</div>
+          <div class="edu-school">Pelita Bangsa Academy</div>
+          <div class="edu-year">Aug &ndash; Dec 2025</div>
+        </div>
+        <div class="edu-card" style="opacity:.72;border-style:dashed;">
+          <div class="edu-title">AWS Certified Cloud Practitioner</div>
+          <div class="edu-school">Amazon Web Services</div>
+          <div class="edu-year">In progress</div>
+        </div>
+        <div class="edu-card" style="opacity:.72;border-style:dashed;">
+          <div class="edu-title">AWS Certified Solutions Architect &ndash; Associate</div>
+          <div class="edu-school">Amazon Web Services</div>
+          <div class="edu-year">Planned</div>
+        </div>
+        <div class="edu-card" style="opacity:.72;border-style:dashed;">
+          <div class="edu-title">Certified Kubernetes Administrator (CKA)</div>
+          <div class="edu-school">CNCF / Linux Foundation</div>
+          <div class="edu-year">Planned</div>
         </div>
       </div>
     </section>
@@ -995,7 +1087,7 @@
         <div class="service-card">
           <div class="service-icon">☁</div>
           <div class="service-title">AWS Infrastructure Audit</div>
-          <div class="service-desc">Architecture review, security check, multi-account setup, IAM cleanup.</div>
+          <div class="service-desc">Architecture review, IAM and security check, cost and Reserved Instance analysis.</div>
         </div>
         <div class="service-card">
           <div class="service-icon">💰</div>
