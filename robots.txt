@@ -1,0 +1,5 @@
+# https://budisetiawan760.github.io/
+User-agent: *
+Allow: /
+
+Sitemap: https://budisetiawan760.github.io/sitemap.xml
