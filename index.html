@@ -62,7 +62,7 @@
       },
       "knowsAbout": [
         "DevOps", "Site Reliability Engineering", "Amazon Web Services",
-        "Kubernetes", "Terraform", "ArgoCD", "GitOps", "Docker",
+        "Kubernetes", "K3s", "Terraform", "Flux CD", "GitOps", "Docker",
         "Prometheus", "Grafana", "OpenTelemetry", "Observability",
         "Incident Response", "HashiCorp Vault", "CI/CD", "GitHub Actions",
         "LLMOps", "AI Platform Operations", "Cloud Cost Optimization",
@@ -901,8 +901,10 @@
         for infrastructure, deployment and production incidents. Eight years across software and
         infrastructure, the last three dedicated to DevOps and SRE.
         <br><br>
-        Day to day that means an AWS estate of roughly 30 EC2 instances, ECS services and two K3s
-        clusters held to a 99% uptime target, with SLOs, SLIs and error budgets I defined myself. I own
+        Today the live estate runs on Vercel, Fly.io, Supabase and Cloudflare with self-hosted
+        Grafana, Loki and Prometheus, plus three AWS accounts. Before that I operated three
+        Flux CD-managed K3s clusters, held to a 99% uptime target, with SLOs, SLIs and error
+        budgets I defined myself. I own
         on-call, write the postmortems and maintain the runbooks &mdash; and when an LLM or agent
         misbehaves in production, the debugging is mine too, across
         <strong>Anthropic Claude, OpenRouter, DeepInfra and Perplexity MCP</strong>.
@@ -930,9 +932,12 @@
             <div class="role-location">Lithuania · Remote</div>
             <ul class="role-bullets">
               <li><strong>Sole DevOps engineer</strong> for the company and the single escalation point across engineering for infrastructure, deployment and production incidents.</li>
-              <li><strong>Operate an AWS estate</strong> of ~30 EC2 instances, ECS services and two K3s clusters running distributed multi-LLM agent workloads on Anthropic Claude, OpenRouter, DeepInfra and Perplexity MCP.</li>
+              <li><strong>Rebuilt the Kubernetes platform after a production cost incident</strong> &mdash; roughly USD 5,000 leaked through uncontrolled AI API usage. Tore the compromised estate down and stood up two replacement K3s clusters (Singapore and EU) end-to-end solo.</li>
+              <li><strong>Operated three Flux CD-managed K3s clusters</strong> &mdash; 33 workloads, 391 manifests &mdash; with Longhorn storage, Traefik ingress, cert-manager, Loki/Vector logging and SOPS-encrypted secrets. Live incident response included <strong>etcd disaster recovery</strong> and certificate rotation. (Oct 2025 &ndash; May 2026)</li>
+              <li><strong>Currently operate the live estate</strong> on Vercel, Fly.io, Supabase and Cloudflare with self-hosted Grafana/Loki/Prometheus, running distributed multi-LLM agent workloads on Anthropic Claude, OpenRouter, DeepInfra and Perplexity MCP.</li>
+              <li>Built a Prometheus/Loki observability platform monitoring <strong>45 scrape endpoints</strong>, and a daily automated SRE reporting system covering <strong>10 production applications</strong>.</li>
               <li><strong>Define SLOs, SLIs and error budgets</strong> against a 99% uptime target; own on-call incident response, write postmortems and maintain runbooks.</li>
-              <li><strong>Provision infrastructure as code with Terraform</strong> and run GitOps delivery to Kubernetes with ArgoCD; CI/CD pipelines in GitHub Actions across sandbox, staging and production.</li>
+              <li><strong>Authored ~9,800 lines of Terraform across 22 reusable modules</strong> and ran GitOps delivery to K3s with Flux CD; maintained <strong>197 CI/CD workflows across 65 repositories</strong>, including one service deploying four environments across two AWS regions.</li>
               <li><strong>Instrument observability</strong> with Prometheus, Grafana, CloudWatch and Loki/OpenTelemetry; centralise secrets in HashiCorp Vault.</li>
               <li><strong>Monitor cloud spend across AWS and Azure</strong>, and help select and size AWS Reserved Instance commitments.</li>
             </ul>
