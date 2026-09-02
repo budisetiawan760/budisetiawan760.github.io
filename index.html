@@ -681,55 +681,6 @@
     color: var(--text-muted);
     line-height: 1.5;
   }
-  a.service-card {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .service-card.work-feature {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 190px 1fr;
-    gap: 1.6rem;
-    align-items: center;
-  }
-  .work-feature-art {
-    position: relative;
-    background: #fdfbf4;
-    border-radius: 10px;
-    padding: 0.9rem 0.9rem 0.4rem;
-    transform: rotate(-2.5deg);
-    box-shadow: 0 12px 28px var(--shadow-lg);
-    transition: transform 0.25s ease;
-  }
-  .work-feature-art::before {
-    content: "";
-    position: absolute;
-    top: -9px; left: 50%;
-    width: 64px; height: 18px;
-    transform: translateX(-50%) rotate(-3deg);
-    background: rgba(233, 222, 188, 0.9);
-  }
-  .work-feature-art svg { display: block; width: 100%; height: auto; }
-  a.service-card:hover .work-feature-art { transform: rotate(0deg) scale(1.04); }
-  .work-feature-meta {
-    font-size: 0.78rem;
-    color: var(--text-subtle);
-    margin-top: 0.65rem;
-  }
-  @media (max-width: 640px) {
-    .service-card.work-feature { grid-template-columns: 1fr; gap: 1.1rem; }
-    .work-feature-art { max-width: 190px; margin: 0.4rem auto 0; }
-  }
-  .service-cue {
-    display: inline-block;
-    margin-top: 0.7rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent);
-  }
-  a.service-card:hover .service-cue { text-decoration: underline; }
 
   /* Consultation form */
   .consult-wrap {
@@ -1132,8 +1083,7 @@
       <div class="section-label">Signature work</div>
       <h2 class="section-title">What I've built and run</h2>
       <p class="section-intro" style="max-width:720px;">
-        Four production systems that say more about how I work than a tools list does &mdash;
-        and one thing I built for the fun of it.
+        Four things that say more about how I work than a tools list does.
       </p>
 
       <div class="service-grid">
@@ -1179,48 +1129,6 @@
             &mdash; without losing the services still running on them.
           </div>
         </div>
-
-        <a class="service-card work-feature" href="mulberry-hollow.html" target="_blank" rel="noopener">
-          <div class="work-feature-art" aria-hidden="true">
-            <svg viewBox="0 0 300 300">
-              <defs>
-                <filter id="mhCrayon" x="-15%" y="-15%" width="130%" height="130%">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" seed="7" result="n"/>
-                  <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="rough"/>
-                  <feTurbulence type="fractalNoise" baseFrequency="0.42" numOctaves="3" seed="4" result="g"/>
-                  <feColorMatrix in="g" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .40 0" result="ga"/>
-                  <feComposite in="ga" in2="rough" operator="in" result="gc"/>
-                  <feBlend in="rough" in2="gc" mode="screen"/>
-                </filter>
-              </defs>
-              <path filter="url(#mhCrayon)" d="M139,214 q-5,40 -4,76 q9,10 26,2 q-1,-40 -2,-79 z" fill="#a3703f" stroke="#2f2b3f" stroke-width="4"/>
-              <path filter="url(#mhCrayon)" d="M150,58 C112,74 74,140 46,230 C40,250 48,262 62,262 q22,16 44,0 q22,-16 44,0 q22,16 44,0 q22,-16 44,0 C252,262 260,250 254,230 C226,140 188,74 150,58 Z" fill="#6a5ad6" stroke="#2f2b3f" stroke-width="5" stroke-linejoin="round"/>
-              <path d="M104,124 q-34,52 -50,102 M196,124 q34,52 50,102" fill="none" stroke="rgba(20,14,60,.45)" stroke-width="4" stroke-linecap="round"/>
-              <path filter="url(#mhCrayon)" d="M52,214 q-19,10 -12,28 q8,14 24,5" fill="#6a5ad6" stroke="#2f2b3f" stroke-width="4"/>
-              <path filter="url(#mhCrayon)" d="M248,214 q19,10 12,28 q-8,14 -24,5" fill="#6a5ad6" stroke="#2f2b3f" stroke-width="4"/>
-              <path filter="url(#mhCrayon)" d="M111,181 q39,-16 78,0 q-6,42 -39,42 q-33,0 -39,-42 z" fill="#f2aec3" stroke="#2f2b3f" stroke-width="4.5"/>
-              <path d="M92,155 q20,-24 40,0 M168,155 q20,-24 40,0" fill="none" stroke="#2f2b3f" stroke-width="5" stroke-linecap="round"/>
-              <g filter="url(#mhCrayon)">
-                <path d="M150,4 L201,57 L99,57 Z" fill="#fdfbf4" stroke="#2f2b3f" stroke-width="4" stroke-linejoin="round"/>
-                <path d="M150,6 L150,55" stroke="#2f2b3f" stroke-width="2.5" opacity=".55"/>
-                <path d="M95,57 q55,15 110,0" fill="none" stroke="#2f2b3f" stroke-width="4" stroke-linecap="round"/>
-              </g>
-            </svg>
-          </div>
-          <div>
-            <div class="service-title">Mulberry Hollow &mdash; an interactive world from a crayon drawing</div>
-            <div class="service-desc">
-              A break from infrastructure. One child&rsquo;s drawing turned into an original fictional
-              park, its residents and its story &mdash; parametric SVG characters, hand-drawn line
-              &ldquo;boil&rdquo; from SVG turbulence filters, a canvas crayon engine, and two things to
-              play with: a character generator and a scribble wall.
-            </div>
-            <div class="work-feature-meta">
-              Single HTML file &middot; no framework &middot; no build step &middot; no dependencies
-            </div>
-            <span class="service-cue">Open the site &rarr;</span>
-          </div>
-        </a>
       </div>
     </section>
 
